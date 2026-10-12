@@ -248,3 +248,10 @@ python3 -m unittest discover testes
 
 - `scripts/desinstalar.sh` remove o atalho do menu; com `--apagar-dados` remove também lista, senha e histórico.
 - Voltar para a versão 1.0: `git checkout v1.0` dentro da pasta do projeto.
+
+## Licença
+
+O código é distribuído sob a **licença MIT** (veja o arquivo `LICENSE`):
+qualquer pessoa pode usar, copiar, modificar e distribuir, desde que mantenha
+o aviso de direitos autorais. A fonte Bricolage Grotesque, em
+`recursos/fontes/`, tem licença própria (SIL Open Font License 1.1).
