@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="fundo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5b8cff"/><stop offset="1" stop-color="#7b5cf6"/>
+    </linearGradient>
+    <linearGradient id="pagina" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e8ecff"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="112" height="112" rx="28" fill="url(#fundo)"/>
+  <circle cx="64" cy="56" r="34" fill="none" stroke="#ffffff" stroke-opacity=".22" stroke-width="3"/>
+  <ellipse cx="64" cy="56" rx="15" ry="34" fill="none" stroke="#ffffff" stroke-opacity=".22" stroke-width="3"/>
+  <path d="M30 56h68" stroke="#ffffff" stroke-opacity=".22" stroke-width="3"/>
+  <path d="M64 50c-10-7-23-9-34-7v46c11-2 24 0 34 7z" fill="url(#pagina)"/>
+  <path d="M64 50c10-7 23-9 34-7v46c-11-2-24 0-34 7z" fill="url(#pagina)"/>
+  <path d="M64 50v46" stroke="#7b5cf6" stroke-width="2.5"/>
+  <path d="M38 56c6-1 13 0 19 3M38 66c6-1 13 0 19 3M38 76c6-1 13 0 19 3" stroke="#a9b8f5" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M71 59c6-3 13-4 19-3M71 69c6-3 13-4 19-3M71 79c6-3 13-4 19-3" stroke="#a9b8f5" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <circle cx="98" cy="96" r="16" fill="#16a37f" stroke="#ffffff" stroke-width="4"/>
+  <path d="M90 96l6 6 10-11" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

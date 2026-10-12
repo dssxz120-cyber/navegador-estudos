@@ -1,0 +1,54 @@
+#!/usr/bin/python3 -I
+"""Auxiliar do modo protegido: grava a configuração do administrador.
+
+Executado SOMENTE pelo `pkexec`, que pede a senha de administrador do Ubuntu
+antes (regra em scripts/sistema/br.estudos.navegador.policy). Lê o pedido em
+JSON pela entrada padrão, valida tudo e grava em /etc/navegador-estudos/.
+
+Segurança:
+  - "-I" (modo isolado do Python): ignora variáveis de ambiente e a pasta
+    atual, para ninguém injetar módulos falsos;
+  - como root, o destino é SEMPRE /etc/navegador-estudos (argumentos são
+    ignorados); a opção --pasta só existe para testes, sem root;
+  - entrada limitada a 512 KB.
+"""
+
+import json
+import os
+import sys
+from pathlib import Path
+
+RAIZ = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(RAIZ))
+
+from estudos.nucleo.protegido import (TAMANHO_MAXIMO, ConfiguracaoInvalida,  # noqa: E402
+                                      aplicar_configuracao)
+
+DESTINO = Path("/etc/navegador-estudos")
+
+
+def main():
+    pasta = DESTINO
+    if os.geteuid() != 0:
+        if len(sys.argv) != 3 or sys.argv[1] != "--pasta":
+            print("uso (só para testes, sem root): salvar-configuracao --pasta <pasta>",
+                  file=sys.stderr)
+            return 2
+        pasta = Path(sys.argv[2])
+    entrada = sys.stdin.read(TAMANHO_MAXIMO * 2 + 1)
+    if len(entrada) > TAMANHO_MAXIMO * 2:
+        print("pedido grande demais", file=sys.stderr)
+        return 3
+    try:
+        aplicar_configuracao(json.loads(entrada), pasta)
+    except (ValueError, ConfiguracaoInvalida) as erro:     # JSON inválido também é ValueError
+        print(f"configuração recusada: {erro}", file=sys.stderr)
+        return 4
+    except OSError as erro:
+        print(f"não foi possível gravar: {erro.strerror}", file=sys.stderr)
+        return 5
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

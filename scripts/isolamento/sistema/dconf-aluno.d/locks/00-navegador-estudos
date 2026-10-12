@@ -1,0 +1,3 @@
+/org/gnome/desktop/lockdown/disable-command-line
+/org/gnome/settings-daemon/plugins/media-keys/terminal
+/org/gnome/shell/favorite-apps

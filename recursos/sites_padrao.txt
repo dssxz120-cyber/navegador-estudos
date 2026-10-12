@@ -1,0 +1,82 @@
+# ================================================================
+#  LISTA DE SITES PERMITIDOS — Navegador de Estudos
+# ================================================================
+#  Como funciona cada tipo de linha:
+#
+#    [Nome da categoria]      -> começa um grupo na página inicial
+#    Nome | https://endereço  -> cria um atalho E libera o site
+#    + dominio.com            -> libera o domínio sem criar atalho
+#    + dominio.com = Nome     -> idem, e conta o tempo com esse nome
+#    - sub.dominio.com        -> barra um subdomínio de um domínio liberado
+#    ~ dominio.com            -> liberado, mas NÃO conta como estudo (música)
+#    # texto                  -> comentário (é ignorado)
+#
+#  Liberar "exemplo.com" também libera todos os subdomínios,
+#  como "pt.exemplo.com" e "www.exemplo.com".
+#  Não são aceitos curingas (*) nem sufixos públicos como "com.br",
+#  que liberariam milhares de sites.
+# ================================================================
+
+[Inteligência Artificial]
+ChatGPT | https://chatgpt.com/
+Gemini | https://gemini.google.com/
+Claude | https://claude.ai/
+Perplexity | https://www.perplexity.ai/
+Copilot | https://copilot.com/
+# Partes técnicas de que o ChatGPT precisa (login, arquivos e imagens):
++ openai.com = ChatGPT
++ oaistatic.com = ChatGPT
++ oaiusercontent.com = ChatGPT
+# Endereço antigo do Copilot (redireciona para copilot.com):
++ copilot.microsoft.com = Copilot
+
+[Wikipédia e dicionários]
+Wikipédia | https://pt.wikipedia.org/
+Wikcionário | https://pt.wiktionary.org/
+Dicio | https://www.dicio.com.br/
+Michaelis | https://michaelis.uol.com.br/
++ wikipedia.org
++ wiktionary.org
++ wikimedia.org = Wikipédia
+
+[Cursos e exercícios]
+Khan Academy | https://pt.khanacademy.org/
+Brasil Escola | https://brasilescola.uol.com.br/
+Só Matemática | https://www.somatematica.com.br/
+Duolingo | https://www.duolingo.com/
++ khanacademy.org
+
+[Programação]
+MDN Web Docs | https://developer.mozilla.org/pt-BR/
+W3Schools | https://www.w3schools.com/
+Python | https://docs.python.org/pt-br/3/
+Godot | https://docs.godotengine.org/
+Stack Overflow PT | https://pt.stackoverflow.com/
++ stackoverflow.com
++ python.org
+
+[Pesquisa acadêmica]
+Google Acadêmico | https://scholar.google.com.br/
+SciELO | https://www.scielo.br/
++ scholar.google.com = Google Acadêmico
++ scielo.org = SciELO
+
+# ----------------------------------------------------------------
+#  Páginas de LOGIN (só a página de entrar, não o site inteiro).
+#  Permitem "Entrar com Google/Microsoft" no ChatGPT, Gemini etc.
+#  O Google comum (busca, YouTube, Gmail) continua bloqueado.
+# ----------------------------------------------------------------
++ accounts.google.com
++ login.live.com
++ login.microsoftonline.com
+
+# ----------------------------------------------------------------
+#  Seções sociais DENTRO de sites liberados (redes, fóruns e chats).
+#  Nenhuma delas é necessária para as IAs ou para os cursos.
+# ----------------------------------------------------------------
+# Sora: rede social de vídeos da OpenAI (o ChatGPT continua liberado):
+- sora.chatgpt.com
+# Fórum de usuários da OpenAI (o ChatGPT funciona sem ele):
+- community.openai.com
+# Chat em tempo real do Stack Overflow (as perguntas continuam liberadas):
+- chat.stackoverflow.com

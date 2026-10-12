@@ -1,0 +1,64 @@
+/* Visual da janela (barra superior, abas e avisos) — mesma paleta das páginas.
+   A fonte "Bricolage Grotesque" é carregada só para este programa. */
+
+window.navegador, window.navegador * { font-family: "Bricolage Grotesque", Ubuntu, sans-serif; }
+
+/* Barra superior escura (cor "tinta") */
+headerbar.barra {
+  background: #1C1B29; border: 0; box-shadow: none; color: #FFFFFF;
+  min-height: 52px; padding: 0 8px;
+}
+headerbar.barra button {
+  background: transparent; border: 0; box-shadow: none; color: #FFFFFF;
+  border-radius: 12px; min-height: 34px; min-width: 34px;
+}
+headerbar.barra button:hover { background: rgba(255, 255, 255, .12); }
+headerbar.barra button:disabled { color: rgba(255, 255, 255, .35); }
+headerbar.barra button:focus-visible { outline: 2px solid #FFC83D; }
+
+entry.endereco {
+  background: rgba(255, 255, 255, .10); color: #FFFFFF; caret-color: #FFC83D;
+  border: 0; box-shadow: none; border-radius: 14px; min-height: 36px; padding: 0 12px;
+}
+entry.endereco:focus { background: #FFFFFF; color: #1C1B29; }
+entry.endereco image { color: rgba(255, 255, 255, .7); }
+entry.endereco:focus image { color: #3E5BFF; }
+
+/* Botão do Pomodoro: amarelo parado, coral estudando, verde na pausa */
+headerbar.barra button.pomodoro-botao { background: #FFC83D; color: #1C1B29; font-weight: 800; padding: 0 14px; }
+headerbar.barra button.pomodoro-botao:hover { background: #FFD666; }
+headerbar.barra button.pomodoro-botao.estudo { background: #FF6B57; color: #1C1B29; }
+headerbar.barra button.pomodoro-botao.pausa  { background: #17A673; color: #FFFFFF; }
+
+/* Relógio: algarismos de largura fixa, para o texto não "pular" a cada minuto */
+headerbar.barra label.relogio {
+  color: rgba(255, 255, 255, .88); font-weight: 700; font-size: 15px;
+  font-feature-settings: "tnum"; margin: 0 6px 0 4px;
+}
+
+/* Faixa de abas */
+notebook.abas > header { background: #1C1B29; border: 0; box-shadow: none; padding: 0 6px 6px; }
+notebook.abas > header tab {
+  background: transparent; color: rgba(255, 255, 255, .7); border: 0; box-shadow: none;
+  border-radius: 12px; padding: 4px 10px; margin: 0 2px; min-height: 30px;
+}
+notebook.abas > header tab:hover { background: rgba(255, 255, 255, .08); color: #FFFFFF; }
+notebook.abas > header tab:checked { background: #EEF0F6; color: #1C1B29; }
+notebook.abas > header tab:checked button { color: #1C1B29; }
+notebook.abas > header tab button { color: inherit; background: transparent; border: 0; box-shadow: none; padding: 0; min-width: 20px; min-height: 20px; border-radius: 8px; }
+notebook.abas > header tab button:hover { background: rgba(127, 127, 127, .2); }
+notebook.abas > header button { color: #FFFFFF; background: transparent; border: 0; box-shadow: none; border-radius: 10px; }
+notebook.abas > header button:hover { background: rgba(255, 255, 255, .12); }
+notebook.abas > stack { background: #EEF0F6; }
+
+/* Popovers (Pomodoro e Hoje) */
+.pomodoro-tempo { font-size: 48px; font-weight: 800; }
+.pomodoro-fase  { font-size: 13px; font-weight: 800; }
+.hoje-total     { font-size: 30px; font-weight: 800; color: #17A673; }
+
+/* Aviso flutuante */
+.aviso-toast {
+  background: #1C1B29; color: #FFFFFF; border-radius: 16px; padding: 12px 20px;
+  margin: 20px; font-weight: 700;
+}
+.erro { color: #D0353A; }

@@ -1,0 +1,15 @@
+# Travas do GNOME SÓ para a conta "aluno" (perfil dconf "aluno").
+# Instaladas pela Etapa 3 em /etc/dconf/db/aluno.d/; as chaves ficam travadas
+# pelo arquivo em locks/, então o aluno não consegue mudá-las.
+
+[org/gnome/desktop/lockdown]
+# Sem "Executar comando" (Alt+F2) nem linha de comando nos aplicativos.
+disable-command-line=true
+
+[org/gnome/settings-daemon/plugins/media-keys]
+# Sem o atalho Ctrl+Alt+T do terminal.
+terminal=@as []
+
+[org/gnome/shell]
+# Barra lateral só com o Navegador de Estudos e o gerenciador de arquivos.
+favorite-apps=['br.estudos.Navegador.desktop', 'org.gnome.Nautilus.desktop']

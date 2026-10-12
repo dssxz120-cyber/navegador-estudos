@@ -1,0 +1,17 @@
+#!/bin/sh
+# Gerador de ambiente do systemd (instalado pela Etapa 3 em
+# /etc/systemd/user-environment-generators/). Roda no início da sessão de
+# CADA usuário, como o próprio usuário, DEPOIS de ~/.config/environment.d
+# (o "99" garante a ordem). Para o aluno:
+#   - ativa o perfil dconf "aluno" (as travas do GNOME);
+#   - zera variáveis que permitiriam injetar código nos programas.
+# Para as outras contas, não faz nada.
+[ "$(id -un)" = "aluno" ] || exit 0
+echo "DCONF_PROFILE=aluno"
+echo "LD_PRELOAD="
+echo "LD_LIBRARY_PATH="
+echo "PYTHONPATH="
+echo "PYTHONSTARTUP="
+echo "PYTHONHOME="
+echo "GTK_MODULES="
+echo "GIO_EXTRA_MODULES="
