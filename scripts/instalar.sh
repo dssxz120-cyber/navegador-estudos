@@ -11,9 +11,9 @@ Type=Application
 Name=Navegador de Estudos
 Comment=Navegador que abre apenas sites de estudo
 Exec=python3 "$PASTA/navegador_estudos.py"
-Icon=br.estudos.Navegador
+Icon=$PASTA/recursos/icone.svg
 Categories=Education;
-StartupWMClass=navegador_estudos.py
+StartupWMClass=br.estudos.Navegador
 Terminal=false
 FIM
 update-desktop-database ~/.local/share/applications 2>/dev/null || true

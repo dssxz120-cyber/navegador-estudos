@@ -86,8 +86,9 @@ Type=Application
 Name=Navegador de Estudos
 Comment=Navegador que abre apenas sites de estudo
 Exec=/usr/bin/python3 -I $DESTINO/navegador_estudos.py
-Icon=br.estudos.Navegador
+Icon=$DESTINO/recursos/icone.svg
 Categories=Education;
+StartupWMClass=br.estudos.Navegador
 Terminal=false
 FIM
     chmod 644 "$ATALHO"

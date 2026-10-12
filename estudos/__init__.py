@@ -8,4 +8,4 @@ Organização:
 
 NOME_APP = "Navegador de Estudos"
 ID_APP = "br.estudos.Navegador"
-VERSAO = "2.3"
+VERSAO = "2.3.1"

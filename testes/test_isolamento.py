@@ -7,6 +7,7 @@ modo isolado do Python (-I).
 
 import json
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -115,6 +116,26 @@ class TestInstalador(unittest.TestCase):
         self.assertNotRegex(leia, r"curl[^\n]*\|\s*(sudo\s+)?bash")
 
 
+class TestIcone(unittest.TestCase):
+    """O GNOME acha o ícone pelo nome da janela, que tem de ser igual ao do atalho."""
+
+    def test_nome_do_programa(self):
+        r = subprocess.run([sys.executable, "-I", "-c",
+                            f"import sys; sys.path.insert(0, {str(RAIZ)!r}); import navegador_estudos; "
+                            "from gi.repository import GLib; print(GLib.get_prgname())"],
+                           capture_output=True, text=True, timeout=60)
+        self.assertEqual(r.stdout.strip(), "br.estudos.Navegador", r.stderr[-300:])
+
+    def test_atalhos_usam_o_mesmo_nome_e_icone_por_caminho(self):
+        simples = (RAIZ / "scripts" / "instalar.sh").read_text()
+        protegido = (PASTA / "etapa2-aplicar.sh").read_text()
+        for texto, icone in ((simples, "Icon=$PASTA/recursos/icone.svg"),
+                             (protegido, "Icon=$DESTINO/recursos/icone.svg")):
+            self.assertIn("StartupWMClass=br.estudos.Navegador", texto)
+            self.assertIn(icone, texto)
+        self.assertTrue((RAIZ / "recursos" / "icone.svg").is_file())
+
+
 class TestPrepararConfiguracao(unittest.TestCase):
     def rodar(self, pasta, *extra):
         return subprocess.run([str(PREPARAR), str(pasta), *extra], capture_output=True,
@@ -172,11 +193,19 @@ class TestNavegadorEmModoIsolado(unittest.TestCase):
                                         env=ambiente, stderr=subprocess.PIPE, text=True)
             time.sleep(6)
             ainda_rodando = processo.poll() is None
+            classes = ""
+            if shutil.which("xdotool") and shutil.which("xprop"):
+                janelas = subprocess.run(["xdotool", "search", "--pid", str(processo.pid)],
+                                         capture_output=True, text=True).stdout.split()
+                classes = " ".join(subprocess.run(["xprop", "-id", j, "WM_CLASS"], capture_output=True,
+                                                  text=True).stdout for j in janelas)
             processo.terminate()
             erros = processo.communicate(timeout=10)[1]
             self.assertTrue(ainda_rodando, f"o navegador fechou sozinho: {erros[-500:]}")
             self.assertNotIn("Traceback", erros)
             self.assertNotIn("ModuleNotFoundError", erros)
+            if classes.strip():
+                self.assertIn('"br.estudos.Navegador"', classes)
 
 
 if __name__ == "__main__":

@@ -17,6 +17,14 @@ gi.require_version("Gtk", "3.0")
 gi.require_version("Gdk", "3.0")
 gi.require_version("WebKit2", "4.1")
 
+from gi.repository import GLib  # noqa: E402
+
+# Nome com que a janela se apresenta ao sistema (WM_CLASS no X11, app_id no
+# Wayland). Precisa ser igual ao nome do atalho (br.estudos.Navegador.desktop):
+# é assim que o GNOME acha o ícone e o nome certos para a barra lateral.
+GLib.set_prgname("br.estudos.Navegador")
+GLib.set_application_name("Navegador de Estudos")
+
 from estudos.interface.aplicativo import Aplicativo  # noqa: E402
 from estudos.nucleo import caminhos  # noqa: E402
 from estudos.nucleo.regras import ListaDeSites  # noqa: E402
