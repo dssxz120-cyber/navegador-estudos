@@ -5,7 +5,6 @@ Rode todos os testes com:  python3 -m unittest discover testes
 
 import hashlib
 import json
-import subprocess
 import sys
 import tempfile
 import unittest
@@ -91,8 +90,8 @@ class TestArquivos(unittest.TestCase):
     def test_lista_antiga_nao_editada_e_atualizada(self):
         with tempfile.TemporaryDirectory() as pasta:
             arquivo = Path(pasta) / "sites.txt"
-            antigo = subprocess.run(["git", "-C", str(RAIZ), "show", "v1.0:sites_padrao.txt"],
-                                    capture_output=True, check=True).stdout
+            # Cópia da lista padrão da v1.0 (não depende do histórico do git).
+            antigo = (RAIZ / "testes" / "dados" / "sites_padrao_v1.0.txt").read_bytes()
             self.assertIn(hashlib.sha256(antigo).hexdigest(), regras.PADROES_ANTIGOS)
             arquivo.write_bytes(antigo)
             with mock.patch.object(caminhos, "ARQUIVO_SITES", arquivo), \
