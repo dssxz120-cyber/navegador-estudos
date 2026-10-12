@@ -1,4 +1,4 @@
-# Guia do código: Navegador de Estudos v2.1.3
+# Guia do código: Navegador de Estudos v2.3
 
 Este guia explica **como o navegador funciona por dentro**, arquivo por
 arquivo e função por função, em português simples. Ele foi pensado para quem
@@ -533,5 +533,7 @@ Rode com `python3 -m unittest discover testes`.
 | **v2.1.1** | Camada 1 (bloqueio antes do pedido), leitor rígido de endereços, validação de domínios, exclusões (Sora, fórum da OpenAI, chat do Stack Overflow), testes com WebKit real |
 | **v2.1.2** | Gravação segura e cópias, senha mais forte e limite de tentativas, recuperação segura, inatividade, estatísticas agrupadas, Pomodoro lembrado, música fora da contagem, correção do botão de fechar |
 | **v2.1.3** | Relógio na barra superior, tela para aba interrompida, documentação atualizada e este guia |
+| **v2.2** | Modo protegido (lista em /etc, senha de administrador via polkit) e isolamento da conta do aluno; primeira versão pública |
+| **v2.3** | Instalação com um comando (`instalar.sh`) e README para quem está começando |
 
 Para ver cada mudança em detalhe: `git log --stat` dentro da pasta do projeto.
