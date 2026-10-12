@@ -89,6 +89,32 @@ class TestEtapa3(unittest.TestCase):
         self.assertIn("/usr/bin/snap", bloco)
 
 
+class TestInstalador(unittest.TestCase):
+    INSTALADOR = RAIZ / "instalar.sh"
+
+    def test_sintaxe_e_executavel(self):
+        self.assertEqual(subprocess.run(["bash", "-n", str(self.INSTALADOR)]).returncode, 0)
+        self.assertTrue(os.access(self.INSTALADOR, os.X_OK))
+
+    def test_simulacao_modo_simples(self):
+        r = subprocess.run(["bash", str(self.INSTALADOR), "--simular", "--simples"],
+                           capture_output=True, text=True, timeout=60)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertIn("simulação", r.stdout)
+        self.assertIn("Pronto", r.stdout)
+
+    def test_opcao_desconhecida(self):
+        r = subprocess.run(["bash", str(self.INSTALADOR), "--qualquer"], capture_output=True, text=True)
+        self.assertEqual(r.returncode, 2)
+
+    def test_nao_usa_curl_pipe_bash(self):
+        """O comando único baixa com git e roda o instalador local (revisável)."""
+        leia = (RAIZ / "README.md").read_text()
+        self.assertIn("git clone https://github.com/dssxz120-cyber/navegador-estudos.git", leia)
+        self.assertIn("bash ~/navegador-estudos/instalar.sh", leia)
+        self.assertNotRegex(leia, r"curl[^\n]*\|\s*(sudo\s+)?bash")
+
+
 class TestPrepararConfiguracao(unittest.TestCase):
     def rodar(self, pasta, *extra):
         return subprocess.run([str(PREPARAR), str(pasta), *extra], capture_output=True,

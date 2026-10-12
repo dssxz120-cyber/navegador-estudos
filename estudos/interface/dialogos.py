@@ -97,7 +97,7 @@ def pedir_senha(pai):
         _mensagem(pai, "O arquivo da senha está danificado",
                   "Não foi possível ler a senha do responsável e não há cópia de segurança "
                   "válida. Por segurança, ela <b>não</b> pode ser redefinida por aqui.\n\n"
-                  "Veja a seção “Recuperar a senha” no LEIA-ME.")
+                  "Veja “Recuperar a senha” no manual (docs/MANUAL.md).")
         return None
 
     dialogo, caixa = _dialogo_base(pai, "Área do responsável", "Entrar")

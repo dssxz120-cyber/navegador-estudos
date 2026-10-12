@@ -84,7 +84,7 @@ class TestArquivos(unittest.TestCase):
     def test_recurso_seguro_bloqueia_fuga_da_pasta(self):
         self.assertIsNotNone(caminhos.recurso_seguro("paginas/mosaico.css"))
         for truque in ["../estudos/__init__.py", "../../../../etc/passwd",
-                       "/etc/passwd", "paginas/../../LEIA-ME.md", "paginas"]:
+                       "/etc/passwd", "paginas/../../README.md", "paginas"]:
             self.assertIsNone(caminhos.recurso_seguro(truque), truque)
 
     def test_lista_antiga_nao_editada_e_atualizada(self):

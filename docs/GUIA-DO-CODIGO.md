@@ -532,6 +532,6 @@ Rode com `python3 -m unittest discover testes`.
 | **v2.0** | IAs, login nos sites, HTTPS, permissões negadas, visual em mosaico, projeto reorganizado |
 | **v2.1.1** | Camada 1 (bloqueio antes do pedido), leitor rígido de endereços, validação de domínios, exclusões (Sora, fórum da OpenAI, chat do Stack Overflow), testes com WebKit real |
 | **v2.1.2** | Gravação segura e cópias, senha mais forte e limite de tentativas, recuperação segura, inatividade, estatísticas agrupadas, Pomodoro lembrado, música fora da contagem, correção do botão de fechar |
-| **v2.1.3** | Relógio na barra superior, tela para aba interrompida, LEIA-ME atualizado e este guia |
+| **v2.1.3** | Relógio na barra superior, tela para aba interrompida, documentação atualizada e este guia |
 
 Para ver cada mudança em detalhe: `git log --stat` dentro da pasta do projeto.

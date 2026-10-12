@@ -1,27 +1,21 @@
-# Navegador de Estudos — versão 2.1.3
+# Manual do Navegador de Estudos
 
 Um navegador que **só abre sites de uma lista aprovada**. Redes sociais, YouTube,
 jogos e buscadores abertos ficam bloqueados. Inclui IAs para estudo, um timer
 Pomodoro, meta diária, sequência de dias estudados e um visual em mosaico colorido.
 
-## Instalar em outro computador
+## Instalar
 
-Requisito: **Ubuntu 24.04**. Abra o Terminal (Ctrl+Alt+T) e rode:
+Requisito: **Ubuntu 24.04**. No Terminal (Ctrl+Alt+T):
 
 ```
-sudo apt install git python3-gi gir1.2-gtk-3.0 gir1.2-webkit2-4.1 publicsuffix gstreamer1.0-plugins-good gstreamer1.0-libav
-git clone https://github.com/dssxz120-cyber/navegador-estudos.git ~/navegador-estudos
-cd ~/navegador-estudos
+sudo apt install -y git && git clone https://github.com/dssxz120-cyber/navegador-estudos.git ~/navegador-estudos && bash ~/navegador-estudos/instalar.sh
 ```
 
-Depois escolha **um** modo:
-
-- **Simples** (uma pessoa, para focar nos estudos): `bash scripts/instalar.sh`.
-  O navegador aparece no menu; na primeira vez ele pede a senha do responsável.
-- **Protegido** (computador com uma conta de aluno): rode, nesta ordem,
-  as etapas da seção "Conta separada para o aluno" abaixo. Num computador
-  novo a lista inicial é a **lista padrão**; YouTube, música e outros sites
-  podem ser liberados depois na Área do responsável.
+O `instalar.sh` confere o sistema, instala os pacotes que faltarem (pedindo
+confirmação) e pergunta o modo: **simples** (uma pessoa) ou **protegido**
+(conta de aluno travada). Para ver antes o que ele faria, sem mudar nada:
+`bash ~/navegador-estudos/instalar.sh --simular`.
 
 Para atualizar: `cd ~/navegador-estudos && git pull` (no modo protegido,
 rode também `sudo bash scripts/isolamento/etapa2-aplicar.sh`, que reinstala o
